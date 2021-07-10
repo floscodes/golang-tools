@@ -1,4 +1,4 @@
-package golang-tools
+package tools
 
 import "unicode"
 
