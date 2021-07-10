@@ -1,4 +1,4 @@
-package github.com/floscodes/golang-tools
+package golang-tools
 
 import "unicode"
 
