@@ -1,18 +1,27 @@
 package tools
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
-func ThousandsSeparate(n string, lang string) string {
+func Separate(N interface{}, lang string) (string, error) {
 
-	c := false
+	switch N.(type) {
+	case int:
+	case int16:
+	case int32:
+	case int64:
+	case int8:
+	case float32:
+	case float64:
 
-	if strings.ContainsAny(n, "abcdefghijklmnopqrstuvwxyz°^§$%&/()=?+#;:_-<>¡“¶¢[]|{}≠¿'!¬”#£ﬁ^˚’—÷˛@ƒ©ªº∆@œæ‘≤¥≈ç√∫~µ∞…–") || strings.ContainsAny(n, "`") || strings.ContainsAny(n, `"`) || strings.ContainsAny(n, "'") {
-		c = true
+	default:
+		return "", fmt.Errorf("Not a valid number!")
+
 	}
 
-	if c {
-		return n
-	}
+	n := fmt.Sprintf("%v", N)
 
 	switch lang {
 
@@ -48,7 +57,7 @@ func ThousandsSeparate(n string, lang string) string {
 			n = n + "," + dec
 		}
 
-		return n
+		return n, nil
 
 	case "en":
 
@@ -82,10 +91,10 @@ func ThousandsSeparate(n string, lang string) string {
 			n = n + "." + dec
 		}
 
-		return n
+		return n, nil
 
 	}
 
-	return n
+	return n, nil
 
 }
