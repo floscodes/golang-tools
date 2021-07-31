@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func Separate(N interface{}, lang string) (string, error) {
+func ThousandsSeparate(N interface{}, lang string) (string, error) {
 
 	switch N.(type) {
 	case int:
